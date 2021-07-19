@@ -1,0 +1,15 @@
+.goalContainer {
+    width: 150px;
+    height: 150px;
+    border: 3px solid black;
+}
+
+.goalContainer .iconBox {
+    width: 100%;
+}
+
+.goalContainer .iconBox .icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
