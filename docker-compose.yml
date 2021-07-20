@@ -6,24 +6,24 @@ services:
       container_name: "node-server"
       user: "node"
       volumes:
-        - ./node/app:/home/node/app
-        - /node/app/node_modules
+        - ./node/app:/usr/app
+        - /usr/app/node_modules
       ports: 
         - "3000:3000"
       environment:
         NODE_ENV: development
 
-    # react-frontend:
-    #   build: ./react
-    #   container_name: "react"
-    #   user: "node"
-    #   volumes:
-    #     - ./react/frontend:/home/node/app
-    #     - /react/frontend/node_modules
-    #   ports: 
-    #     - "4000:3000"
-    # environment:
-    #   NODE_ENV: development
+    react-frontend:
+      build: ./react
+      container_name: "react"
+      user: "node"
+      volumes:
+        - ./react/frontend:/usr/app
+        - /usr/app/node_modules
+      ports: 
+        - "4000:3000"
+      environment:
+        NODE_ENV: development
 
     mongo:
       image: mongo

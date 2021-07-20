@@ -1,17 +1,22 @@
 FROM node:12
 
-WORKDIR /home/node/app
+WORKDIR /usr/app
 
-COPY package*.json ./
-
-RUN npm install --verbose
-
+RUN chown -Rh node:node /usr/app
 
 # install dependencies
 
-# RUN npm install -g create-react-app
-# RUN npm install -g react-scripts
+USER node
+COPY ./frontend/package*.json .
+RUN npm install
 
-COPY . .
+# RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
+
+COPY ./frontend .
+
+USER root
+RUN chown -Rh node:node /usr/app/node_modules
+
+USER node
 
 CMD [ "npm", "start" ]
